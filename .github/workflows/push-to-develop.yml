@@ -20,3 +20,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_branch: develop
           target_branch: refactor
+          label: automatic, refactor
+          template: .github/AUTOMATIC_PR_TEMPLATE.md
+          get_diff: true
+          assignee: ${{ github.actor }}
+          old_string: "<!-- Write your description here -->"
+          new_string: ${{ github.event.commits[0].message }}
+          title: ${{ github.event.commits[0].message }}
+
