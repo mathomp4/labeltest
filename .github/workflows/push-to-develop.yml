@@ -26,5 +26,5 @@ jobs:
           assignee: ${{ github.actor }}
           old_string: "<!-- Write your description here -->"
           new_string: ${{ github.event.commits[0].message }}
-          title: Auto PR: develop → release/MAPL-v3 - ${{ github.event.commits[0].message }}
+          title: Auto PR: develop -> release/MAPL-v3 - ${{ github.event.commits[0].message }}
 
