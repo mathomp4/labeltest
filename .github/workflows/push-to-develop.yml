@@ -1,0 +1,22 @@
+name: Push to develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  pull_request:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Run the action
+        uses: devops-infra/action-pull-request@v0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: develop
+          target_branch: refactor
