@@ -3,7 +3,7 @@ name: Push to develop
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   pull_request:
@@ -18,13 +18,13 @@ jobs:
         uses: devops-infra/action-pull-request@v0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: develop
-          target_branch: MAPL/3
-          label: automatic,MAPL3
+          source_branch: main
+          target_branch: develop
+          label: automatic
           template: .github/AUTOMATIC_PR_TEMPLATE.md
           get_diff: true
           assignee: ${{ github.actor }}
           old_string: "<!-- Write your description here -->"
           new_string: ${{ github.event.commits[0].message }}
-          title: Auto Dev to MAPL/3 - ${{ github.event.commits[0].message }}
+          title: Automatic GitFlow - Main to Develop
 
