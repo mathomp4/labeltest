@@ -14,13 +14,60 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Run the action
+
+      - name: Create Pull Request - 0-diff-trivial
+        if: ${{ github.event.label.name == '0 diff trivial' }}
         uses: devops-infra/action-pull-request@v0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_branch: develop
           target_branch: release/MAPL-v3
-          label: automatic,MAPL3,Skip Changelog
+          label: automatic,MAPL3,Skip Changelog,0 diff trivial
+          template: .github/PULL_REQUEST_TEMPLATE/auto_pr_to_mapl3.md
+          get_diff: true
+          assignee: ${{ github.actor }}
+          old_string: "<!-- Write your description here -->"
+          new_string: ${{ github.event.commits[0].message }}
+          title: Auto PR - develop → MAPL-v3 - ${{ github.event.commits[0].message }}
+
+      - name: Create Pull Request - 0-diff
+        if: ${{ github.event.label.name == '0 diff' }}
+        uses: devops-infra/action-pull-request@v0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: develop
+          target_branch: release/MAPL-v3
+          label: automatic,MAPL3,Skip Changelog,0 diff
+          template: .github/PULL_REQUEST_TEMPLATE/auto_pr_to_mapl3.md
+          get_diff: true
+          assignee: ${{ github.actor }}
+          old_string: "<!-- Write your description here -->"
+          new_string: ${{ github.event.commits[0].message }}
+          title: Auto PR - develop → MAPL-v3 - ${{ github.event.commits[0].message }}
+
+      - name: Create Pull Request - 0-diff-structural
+        if: ${{ github.event.label.name == '0 diff structural' }}
+        uses: devops-infra/action-pull-request@v0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: develop
+          target_branch: release/MAPL-v3
+          label: automatic,MAPL3,Skip Changelog,0 diff structural
+          template: .github/PULL_REQUEST_TEMPLATE/auto_pr_to_mapl3.md
+          get_diff: true
+          assignee: ${{ github.actor }}
+          old_string: "<!-- Write your description here -->"
+          new_string: ${{ github.event.commits[0].message }}
+          title: Auto PR - develop → MAPL-v3 - ${{ github.event.commits[0].message }}
+
+      - name: Create Pull Request - non 0-diff
+        if: ${{ github.event.label.name == 'non 0-diff' }}
+        uses: devops-infra/action-pull-request@v0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: develop
+          target_branch: release/MAPL-v3
+          label: automatic,MAPL3,Skip Changelog,non 0-diff
           template: .github/PULL_REQUEST_TEMPLATE/auto_pr_to_mapl3.md
           get_diff: true
           assignee: ${{ github.actor }}
