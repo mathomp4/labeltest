@@ -10,3 +10,5 @@ Adding a new line
 Adding another line
 
 Let's add another line
+
+Adding another line
