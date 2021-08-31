@@ -13,3 +13,5 @@ Let's add another line
 
 One more line with gpg
 and one more
+
+This line was added on discover
