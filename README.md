@@ -10,3 +10,15 @@ Adding a new line
 Adding another line
 
 Let's add another line
+
+## Contributing
+
+Please check out our [contributing guidelines](CONTRIBUTING.md).
+
+## License
+
+All files are currently licensed under the Apache-2.0 license, see [`LICENSE.md`](LICENSE.md).
+
+Previously, the code was licensed under the [NASA Open Source Agreement, Version 1.3](LICENSE-NOSA.md).
+
+
